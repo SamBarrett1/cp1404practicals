@@ -16,7 +16,7 @@ def main():
     # calling part c) the random grade function
     random_grade = get_random_grade()
     random_result = get_result(random_grade)
-    print("Random grade of {} is {}".format(random_grade, random_result))
+    print("Random grade of {} will be {}".format(random_grade, random_result))
 
 
 def get_result(grade):
