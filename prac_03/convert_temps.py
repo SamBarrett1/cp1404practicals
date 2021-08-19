@@ -1,4 +1,10 @@
-"""Program to read file and convert temperatures"""
+"""
+Program to read file and convert temperatures
+
+Dependencies: This program relies on temps_input.py
+to create and populate it's in_file 'temps_input.txt'
+"""
+
 INFILE_NAME = 'temps_input.txt'
 OUTFILE_NAME = 'temps_output.txt'
 MENU = """C - Convert Celsius to Fahrenheit
