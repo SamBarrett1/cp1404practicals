@@ -1,9 +1,10 @@
+"""Conflict management tool by Sam"""
 import random
 
 
 def main():
     """
-    Conflict Management Tool:
+    Conflict Management Tool for CP1403 Design Thinking:
     A simple random voting program for the final decision of the team
     """
     team_member = ['Danielle', 'Brayden', 'Ethan', 'Adam', 'Jake', 'Sam']
