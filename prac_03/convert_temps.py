@@ -3,32 +3,27 @@ INFILE_NAME = 'temps_input.txt'
 OUTFILE_NAME = 'temps_output.txt'
 MENU = """C - Convert Celsius to Fahrenheit
 F - Convert Fahrenheit to Celsius"""
-# Q - Quit"""
 
 
 def main():
+    """Read file and convert to celsius or fahrenheit"""
     print(MENU)
     choice = input(">>> ").upper()
+    # Open the input and output files
     in_file = open(INFILE_NAME, 'r')
     out_file = open(OUTFILE_NAME, 'w')
-    # while choice != "Q":
     if choice == "C":
         for line in in_file:
             temp = float(line)
             celsius = fahrenheit_to_celsius(temp)
             print(f"{temp:19} Fahrenheit is {celsius:19} Celsius", file=out_file)
-        # break
     else:
         for line in in_file:
             temp = float(line)
             fahrenheit = celsius_to_fahrenheit(temp)
             print(f"{temp:19} Celsius is {fahrenheit:19} Fahrenheit", file=out_file)
-        # break
-        # else:
-        #     print("Invalid option")
-        #     print(MENU)
-        #     choice = input(">>> ").upper()
     print("Temperature conversion is ready in your output file")
+    # Close the input and output files
     in_file.close()
     out_file.close()
 
