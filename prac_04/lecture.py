@@ -13,9 +13,8 @@
 user_name = input('Name: ').capitalize()
 vowels = 'aeiouAEIOU'
 cnt = 0
-letter_cnt = len(user_name)
+letter_cnt = len(user_name) # This is erroneous, can be put straight into print format
 for letter in user_name:
     if letter.lower() in vowels:
         cnt += 1
-print('Out of {} letters, {} has {} vowels'.format(letter_cnt, user_name, cnt))
-
+print('Out of {} letters, {} has {} vowels'.format(letter_cnt, user_name, cnt)) # could include len(user_name)

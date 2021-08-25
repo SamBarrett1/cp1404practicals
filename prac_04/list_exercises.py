@@ -23,7 +23,8 @@ def main():
     print("The last number is {}".format(user_numbers[-1]))
     print("The smallest number is {}".format(min(user_numbers)))
     print("The largest number is {}".format(max(user_numbers)))
-    print("The average of the numbers is {:.1f}".format(user_number_total/NUMBERS))
+    print("The average of the numbers is {:.1f}".format(user_number_total / NUMBERS))
+    print("The average of the numbers is {:.1f}".format(sum(user_numbers) / NUMBERS))
 
 
 def check_user_access(name_string):
