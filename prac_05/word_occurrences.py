@@ -24,7 +24,7 @@ user_str_list.sort()
 # print to see how this works
 # print(user_str_list)
 
-# from solution help, I realise this was for spacing in the final print using list comprehension
+
 spacing = max((len(word) for word in user_str_list))
 for word in user_str_list:
     print("{:{}} : {}". format(word, spacing, user_str_dict.get(word)))
