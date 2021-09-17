@@ -1,0 +1,32 @@
+BoxLayout:
+    #The main outer structure of the BoxLayout is vertical, even with nothing at the top
+    orientation: 'vertical'
+    BoxLayout
+        orientation: 'horizontal'
+        Button:
+            TextInput:
+                id: input_number
+                text: '34'
+                font_size: 48
+                on_text: app.handle_calculate(input_number.text)
+            # Inner nested BoxLayout, this right aligned subsection is vertical
+            BoxLayout:
+                orientation: 'vertical'
+                Button:
+                    text: 'Up'
+                    # the following line specifies the function in the app class to call when the Up button is pressed
+                    on_press: app.handle_up_calculate(float(input_number.text))
+                    Button:
+                    text: 'Down'
+                    # the following line specifies the function in the app class to call when the Dn button is pressed
+                    on_press: app.handle_dn_calculate(float(input_number.text))
+    # This button fits into the outer BoxLayout vertical, so it is next and goes underneath
+#    Button:
+#        text: 'Covert m to km'
+#        # the following line specifies the function in the app class to call when the Convert button is pressed
+#        on_press: app.handle_calculate(int(input_number.text))
+    Label:
+            id: output_label
+            font_size: 48
+            color: (1, 0, 1, 1)
+
