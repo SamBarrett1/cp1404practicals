@@ -3,6 +3,8 @@
 from kivy.app import App
 from kivy.lang import Builder
 
+MILES_CONVERSION = 1.609344
+
 __author__ = 'Samuel Barrett'
 
 
@@ -14,21 +16,29 @@ class ConvertMtoKmApp(App):
         self.root = Builder.load_file('convert_miles_km.kv')
         return self.root
 
-    def handle_up_calculate(self, value):
+    def handle_increment(self, value):
         """ handle calculation (could be button press or other call), output result to label widget """
-        result = value + 1
+        result = self.get_validated_miles() + value
         self.root.ids.input_number.text = str(result)
+        self.handle_calculate()
 
-    def handle_dn_calculate(self, value):
+    def handle_calculate(self):
         """ handle calculation (could be button press or other call), output result to label widget """
-        result = value - 1
-        self.root.ids.input_number.text = str(result)
+        value = self.get_validated_miles()
+        # result = value * 1.609344
+        result = value * MILES_CONVERSION
+        self.root.ids.output_label.text = str(f"{result:.3f}")
 
-    def handle_calculate(self, value):
-        """ handle calculation (could be button press or other call), output result to label widget """
-        value = float(self.root.ids.input_number.text)
-        result = value * 1.609344
-        self.root.ids.output_label.text = float(f"{result:.2f}")
+    def get_validated_miles(self):
+        """
+        get text input from text entry widget, convert to float
+        :return: 0 if error, float version of text if valid
+        """
+        try:
+            value = float(self.root.ids.input_number.text)
+            return value
+        except ValueError:
+            return 0
 
 
 ConvertMtoKmApp().run()
