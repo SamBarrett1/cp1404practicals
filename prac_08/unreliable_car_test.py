@@ -1,16 +1,21 @@
 """Practical 08 - Samuel Barrett - 13038579"""
 
 from prac_08.unreliable_car import UnreliableCar
-import random
 
 
 def run_tests():
-    random_number = random.randint(0, 100)
-    reliability = float(random_number)
 
-    user_car = UnreliableCar("UnreliableCar", 100, reliability)
-    user_car.drive(90)
-    print(user_car)
+    good_car = UnreliableCar("Good Car", 100, 90)
+    bad_car = UnreliableCar("Bad Car", 100, 10)
+
+    for i in range(1, 15):
+        print("Attempting to drive {}km:".format(i))
+        print("{:12} drove {:2}km".format(good_car.name, good_car.drive(i)))
+        print("{:12} drove {:2}km".format(bad_car.name, bad_car.drive(i)))
+
+    """print the final states of the cars"""
+    print(good_car)
+    print(bad_car)
 
 
 run_tests()
