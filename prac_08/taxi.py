@@ -12,6 +12,7 @@ class Taxi(Car):
     def __init__(self, name, fuel):
         """Initialise a Taxi instance, based on parent class Car."""
         super().__init__(name, fuel)
+        # this is the initialise of a new attribute, that does not need to come in through a parameter name, fuel etc
         self.current_fare_distance = 0
 
     def __str__(self):
