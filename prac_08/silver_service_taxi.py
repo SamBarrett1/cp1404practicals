@@ -20,7 +20,7 @@ class SilverServiceTaxi(Taxi):
     def __str__(self):
         """define print string with an override to include Taxi string, and add extras"""
         # you only need one {} for an override, it will include all of the {}'s in super.__str__() in that {}
-        return "{} with fanciness, plus flagfall of ${:.2f}, total fare is ${:.2f}".format(super().__str__(),
+        return "{} with *= fanciness, plus flagfall of ${:.2f}, total fare is ${:.2f}".format(super().__str__(),
                                                                                            self.flagfall,
                                                                                            self.get_fare())
 
