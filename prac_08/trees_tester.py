@@ -39,5 +39,10 @@ def main():
     wide_tree.grow(10, 3)
     print(wide_tree)
 
+    print('My test')
+    pine_tree = trees.PineTree()
+    pine_tree.grow(10, 3)
+    print(pine_tree)
+
 
 main()

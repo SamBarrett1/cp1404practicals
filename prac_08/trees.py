@@ -130,4 +130,43 @@ class PineTree(Tree):
 *******
    |
    |    """
-    pass
+
+    def __init__(self):
+        super().__init__()
+        self._trunk_height = 1
+        self._leaves = 0
+
+    def get_ascii_leaves(self):
+        """Return a string representation of the tree's leaves."""
+        super().get_ascii_leaves()
+
+        for i in range(1, self._leaves):
+            for j in range(self._leaves - i):
+                print(" ", end=" ")
+            for k in range(1, i):
+                print("*", end=" ")
+            for la in range(i, 0, -1):
+                print("*", end=" ")
+        return
+
+    def grow(self, sunlight, water):
+        super().grow(sunlight, water)
+        """Grow a tree based on the sunlight and water parameters.
+        Randomly grow the trunk height by a number between 0 and water.
+        Randomly increase the leaves by a number between 0 and sunlight."""
+        self._trunk_height += random.randint(0, water)
+        self._leaves += random.randint(0, sunlight)
+
+    def __str__(self):
+        """attempt at pine tree - could not find a way to bring in .grow()"""
+
+        n = 6
+
+        for i in range(n):
+            print(" "*(n-i-1), end="")
+            for j in range(i+1):
+                print("* ", end="")
+            print()
+        for i in range(n // 2):
+            print(n * " " + "|")
+        return
