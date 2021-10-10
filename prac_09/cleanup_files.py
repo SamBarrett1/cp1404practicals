@@ -43,7 +43,7 @@ def main():
         # os.rename(filename, new_name)
 
         # Option 2: move file to new place, with new name
-        shutil.move(filename, 'temp/' + new_name)
+        # shutil.move(filename, 'temp/' + new_name)
 
         # My line to get the files back from 'temp' to ../Christmas
         # shutil.move(filename, '../Christmas' + new_name)
@@ -51,6 +51,17 @@ def main():
 
 def get_fixed_filename(filename):
     """Return a 'fixed' version of filename."""
+    indexed_name = []
+    for char in enumerate(filename):
+        indexed_name.append(char)
+    print(indexed_name)
+    index_length = len(indexed_name))
+
+    for i in range(0, index_length+1):
+        pos1 = indexed_name[i]
+        pos2 = indexed_name[i+1]
+        print('This is pos1: {} and pos2: {}'.format(pos1, pos2))
+
     new_name = filename.replace(" ", "_").replace(".TXT", ".txt")
     return new_name
 
