@@ -35,12 +35,18 @@ def get_fixed_filename(filename):
 
     for i in range(0, index_length):
         pos1 = indexed_name[i]
-        letter = str(pos1)
-        if letter.isupper():
-            print(letter)
+        letter1 = str(pos1)
+        if letter1.isupper():
+            the_letter = letter1[5]
+            the_index = letter1[1]
+            print('The Letter is : {} with index: {}'. format(the_letter, the_index))
+            print(indexed_name[int(the_index)+1])
+
         # for j in range(1, index_length):
         #     pos2 = indexed_name[j]
-        #     print(str(pos1.isUpper))
+        #     letter2 = str(pos2)
+        #     if letter1.isupper() and letter2.islower():
+        #         print('True')
 
     new_name = filename.replace(" ", "_").replace(".TXT", ".txt")
     return new_name
