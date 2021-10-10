@@ -27,6 +27,7 @@ def main():
 def get_fixed_filename(filename):
     """Return a 'fixed' version of filename."""
     indexed_name = []
+    print(filename)
     for char in enumerate(filename):
         indexed_name.append(char)
     print(indexed_name)
@@ -34,8 +35,12 @@ def get_fixed_filename(filename):
 
     for i in range(0, index_length):
         pos1 = indexed_name[i]
-        pos2 = indexed_name[i+1]
-        print('This is pos1: {} and pos2: {}'.format(pos1, pos2))
+        letter = str(pos1)
+        if letter.isupper():
+            print(letter)
+        # for j in range(1, index_length):
+        #     pos2 = indexed_name[j]
+        #     print(str(pos1.isUpper))
 
     new_name = filename.replace(" ", "_").replace(".TXT", ".txt")
     return new_name
@@ -53,4 +58,6 @@ def get_spacing():
     return longest_str
 
 
-main()
+# main()
+
+get_fixed_filename('SilentNight.txt')
