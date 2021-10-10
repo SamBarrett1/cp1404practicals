@@ -7,67 +7,7 @@ import os
 
 
 def main():
-    """Demo os module functions."""
-    print("Starting directory is: {}".format(os.getcwd()))
-
-    # Change to desired directory, with error handling
-    try:
-        os.chdir('Lyrics/Christmas')
-    except FileNotFoundError:
-        print('File not found')
-
-    # Print a list of all files in current directory
-    print("Files in {}:\n{}\n".format(os.getcwd(), os.listdir('.')))
-
-    # Make a new directory, with error handling
-    try:
-        os.mkdir('temp')
-    except FileExistsError:
-        pass
-
-    # My tests change into temp, to get files back to ../Christmas
-    # os.chdir("temp")
-    # print("Directory is now: {}".format(os.getcwd()))
-
-    # Loop through each file in the (current) directory
-    for filename in os.listdir('.'):
-
-        # Ignore directories, just process files
-        if os.path.isdir(filename):
-            continue
-
-        new_name = get_fixed_filename(filename)
-        print("Renaming {} to {}".format(filename, new_name))
-
-        # Option 1: rename file to new name - in place
-        # os.rename(filename, new_name)
-
-        # Option 2: move file to new place, with new name
-        # shutil.move(filename, 'temp/' + new_name)
-
-        # My line to get the files back from 'temp' to ../Christmas
-        # shutil.move(filename, '../Christmas' + new_name)
-
-
-def get_fixed_filename(filename):
-    """Return a 'fixed' version of filename."""
-    indexed_name = []
-    for char in enumerate(filename):
-        indexed_name.append(char)
-    print(indexed_name)
-    index_length = len(indexed_name))
-
-    for i in range(0, index_length+1):
-        pos1 = indexed_name[i]
-        pos2 = indexed_name[i+1]
-        print('This is pos1: {} and pos2: {}'.format(pos1, pos2))
-
-    new_name = filename.replace(" ", "_").replace(".TXT", ".txt")
-    return new_name
-
-
-def demo_walk():
-    """Process all subdirectories using os.walk()."""
+    """Universalise txt format of filenames"""
     os.chdir('Lyrics')
     for directory_name, subdirectories, filenames in os.walk('.'):
         print("Directory:", directory_name)
@@ -84,6 +24,23 @@ def demo_walk():
             print('Renaming {:{}} to {}'.format(full_name, spacing, new_name))
 
 
+def get_fixed_filename(filename):
+    """Return a 'fixed' version of filename."""
+    indexed_name = []
+    for char in enumerate(filename):
+        indexed_name.append(char)
+    print(indexed_name)
+    index_length = len(indexed_name)
+
+    for i in range(0, index_length):
+        pos1 = indexed_name[i]
+        pos2 = indexed_name[i+1]
+        print('This is pos1: {} and pos2: {}'.format(pos1, pos2))
+
+    new_name = filename.replace(" ", "_").replace(".TXT", ".txt")
+    return new_name
+
+
 def get_spacing():
     """get length of longest directory + filename for print spacing"""
     longest_str = 0
@@ -97,6 +54,3 @@ def get_spacing():
 
 
 main()
-
-
-# demo_walk()
