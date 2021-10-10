@@ -33,32 +33,44 @@ def get_fixed_filename(filename):
         indexed_name.append(char)
     print(indexed_name)
     index_length = len(indexed_name)
+    print('This is the index_length: {}:'.format(index_length))
+
+    # function to return count of uppercase letters
+    upper_case_count = get_upper_count(filename)
+    print('Uppercase cnt: {}'.format(upper_case_count))
+
+    modified_filename = filename
+    underscore = 0
 
     for i in range(0, index_length):
         pos1 = indexed_name[i]
+        letter1 = pos1[1]
+        if letter1.isupper():
+            # print('The Letter is : {} with index: {}'.format(letter1, pos1[0]))
+            if int(pos1[0]) > 1:
+                index_start = int(pos1[0]) + underscore
+                index = int(pos1[0])
+                # print('This is Index with underscore: {} and type: {}'.format(index, type(index)))
+                modified_filename = (modified_filename[0:index_start] + '_' + filename[index:])
+                print(modified_filename)
+                underscore += 1
+                print(underscore)
+
+    return modified_filename
+
+
+def get_upper_count(filename):
+    """get the count of uppercase letters in the filename"""
+    count = 0
+    indexed_name = []
+    for char in enumerate(filename):
+        indexed_name.append(char)
+    for i in range(0, len(indexed_name)):
+        pos1 = indexed_name[i]
         letter1 = str(pos1)
         if letter1.isupper():
-            # this nxt bit is getting the index of the (1, 'i') can't work out a better way
-            # but it grabs the index of the capital letter and the capital
-            the_letter = letter1[5]
-            the_index = letter1[1]
-            print('The Letter is : {} with index: {}'. format(the_letter, the_index))
-            if int(the_index) > 1:
-                previous_letter = indexed_name[int(the_index)-1]
-                previous_letter_str = str(previous_letter)
-                print(indexed_name[int(the_index)-1])
-                if previous_letter_str.islower():
-                    print('true')
-                    print(filename[0:int(the_index)] + '_' + filename[int(the_index):])
-
-        # for j in range(1, index_length):
-        #     pos2 = indexed_name[j]
-        #     letter2 = str(pos2)
-        #     if letter1.isupper() and letter2.islower():
-        #         print('True')
-
-    new_name = filename.replace(" ", "_").replace(".TXT", ".txt")
-    return new_name
+            count += 1
+    return count
 
 
 def get_spacing():
@@ -75,4 +87,4 @@ def get_spacing():
 
 # main()
 
-get_fixed_filename('SilentNight.txt')
+get_fixed_filename('SilentNightTonightWithStars.txt')
