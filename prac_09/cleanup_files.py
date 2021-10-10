@@ -26,6 +26,7 @@ def main():
 
 def get_fixed_filename(filename):
     """Return a 'fixed' version of filename."""
+    count = 0
     indexed_name = []
     print(filename)
     for char in enumerate(filename):
@@ -37,10 +38,18 @@ def get_fixed_filename(filename):
         pos1 = indexed_name[i]
         letter1 = str(pos1)
         if letter1.isupper():
+            # this nxt bit is getting the index of the (1, 'i') can't work out a better way
+            # but it grabs the index of the capital letter and the capital
             the_letter = letter1[5]
             the_index = letter1[1]
             print('The Letter is : {} with index: {}'. format(the_letter, the_index))
-            print(indexed_name[int(the_index)+1])
+            if int(the_index) > 1:
+                previous_letter = indexed_name[int(the_index)-1]
+                previous_letter_str = str(previous_letter)
+                print(indexed_name[int(the_index)-1])
+                if previous_letter_str.islower():
+                    print('true')
+                    print(filename[0:int(the_index)] + '_' + filename[int(the_index):])
 
         # for j in range(1, index_length):
         #     pos2 = indexed_name[j]
