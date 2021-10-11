@@ -24,17 +24,18 @@ def main():
             print('Renaming {:{}} to {}'.format(full_name, spacing, new_name))
 
 
-def get_fixed_filename(filename):
+def get_fixed_filename(new_name):
     """Return a 'fixed' version of filename."""
+    new_name = new_name.replace(" ", "_").replace(".TXT", ".txt")
     indexed_name = []
     print('Before any formatting')
-    print(filename)
+    print(new_name)
 
-    for char in enumerate(filename):
+    for char in enumerate(new_name):
         indexed_name.append(char)
     index_length = len(indexed_name)
 
-    modified_filename = filename
+    modified_filename = new_name
     underscore = 0
 
     # First formatting check looking for capital letters without underscores
@@ -48,7 +49,7 @@ def get_fixed_filename(filename):
                 index_start = int(pos[0]) + underscore
                 index = int(pos[0])
                 # print('This is Index with underscore: {} and type: {}'.format(index, type(index)))
-                modified_filename = (modified_filename[0:index_start] + '_' + filename[index:])
+                modified_filename = (modified_filename[0:index_start] + '_' + new_name[index:])
                 # print(modified_filename)
                 # print('....................next loop')
                 underscore += 1
