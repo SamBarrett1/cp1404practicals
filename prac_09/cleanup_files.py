@@ -26,35 +26,82 @@ def main():
 
 def get_fixed_filename(filename):
     """Return a 'fixed' version of filename."""
-    count = 0
     indexed_name = []
+    print('Before any formatting')
     print(filename)
+
     for char in enumerate(filename):
         indexed_name.append(char)
-    print(indexed_name)
     index_length = len(indexed_name)
-    print('This is the index_length: {}:'.format(index_length))
-
-    # function to return count of uppercase letters
-    upper_case_count = get_upper_count(filename)
-    print('Uppercase cnt: {}'.format(upper_case_count))
 
     modified_filename = filename
     underscore = 0
 
+    # First formatting check looking for capital letters without underscores
     for i in range(0, index_length):
-        pos1 = indexed_name[i]
-        letter1 = pos1[1]
-        if letter1.isupper():
-            # print('The Letter is : {} with index: {}'.format(letter1, pos1[0]))
-            if int(pos1[0]) > 1:
-                index_start = int(pos1[0]) + underscore
-                index = int(pos1[0])
+        pos = indexed_name[i]
+        letter = pos[1]
+        if letter.isupper():
+            # if the letter is uppercase make character to the left '_' if it's not at front of the filename
+            # print('The Letter is : {} with index: {}'.format(letter, pos[0]))
+            if int(pos[0]) > 1:
+                index_start = int(pos[0]) + underscore
+                index = int(pos[0])
                 # print('This is Index with underscore: {} and type: {}'.format(index, type(index)))
                 modified_filename = (modified_filename[0:index_start] + '_' + filename[index:])
-                print(modified_filename)
+                # print(modified_filename)
+                # print('....................next loop')
                 underscore += 1
-                print(underscore)
+        else:
+            pass
+
+    # Start of the next formatting check for lowercase letters next to '_'
+    print('After first loop of checks')
+    print(modified_filename)
+    new_indexed_name = []
+
+    # Needing the modified_filename here if the first formatting check needed to make any changes
+    for char in enumerate(modified_filename):
+        new_indexed_name.append(char)
+    # print(new_indexed_name)
+    new_index_length = len(new_indexed_name)
+
+    # split modified_filename into a list of characters
+    new_list_of_characters = []
+    for char in modified_filename:
+        new_list_of_characters.append(char)
+    # print(new_list_of_characters)
+
+    # loop through the ascii codes to find
+    for i in range(0, new_index_length):
+        pos = new_indexed_name[i]
+        letter = pos[1]
+        underscore_ascii_code = ord(letter)
+
+        # Only proceed to check what's next where an '_' is located
+        if underscore_ascii_code == 95:
+            # get index of next enumerated character tuple eg: (0, 'S') pos[0] = 0 and pos[1] = 'S'
+            next_pos = int(pos[0]) + 1
+            next_letter_tuple = new_indexed_name[next_pos]
+            next_letter = next_letter_tuple[1]
+            # print('this is next letter tuple: {}'.format(next_letter_tuple))
+            # print('this is next_pos index: {}'.format(next_pos))
+            # print('this is next_letter: {}'.format(next_letter))
+            # Only proceed if the next letter is lowercase
+            if next_letter.islower():
+                make_upper = next_letter
+                title_case = make_upper.title()
+                # print('this is title case: {}'.format(title_case))
+                # print('changed to Uppercase successfully')
+                if int(pos[0]) > 1:
+                    new_list_of_characters[next_pos] = title_case
+                    modified_filename = ''.join(new_list_of_characters)
+                    # print(modified_filename)
+        else:
+            pass
+
+    print('After second loop of checks')
+    print(modified_filename)
 
     return modified_filename
 
@@ -85,6 +132,6 @@ def get_spacing():
     return longest_str
 
 
-# main()
+main()
 
-get_fixed_filename('SilentNightTonightWithStars.txt')
+# get_fixed_filename('SilentNight_tonightWith_lucidAwareness.txt')
