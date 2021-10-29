@@ -1,4 +1,4 @@
-"""Practical 10 - Samuel Barrett 13038579"""
+"""Practical 10 - Samuel Barrett 13038579 """
 
 import wikipedia
 
