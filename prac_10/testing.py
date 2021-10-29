@@ -48,6 +48,10 @@ def run_tests():
     # You should test both of these
     test_car = Car(fuel=10)
     assert test_car.fuel == 10
+    test_car.add_fuel(20)
+    assert test_car.fuel == 30
+    test_car.add_fuel(10)
+    assert not test_car.fuel == 30
 
 
 # run_tests()
